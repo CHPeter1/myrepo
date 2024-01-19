@@ -1,0 +1,152 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={PERSONAL CHECKS},
+  pdfauthor={NGAIRA},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{PERSONAL CHECKS}
+\author{NGAIRA}
+\date{2024-01-19}
+
+\begin{document}
+\maketitle
+
+\hypertarget{load-data}{%
+\section{Load Data}\label{load-data}}
+
+\begin{verbatim}
+## Rows: 1410 Columns: 11
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (2): period, county
+## dbl (9): Total Dewormed, Acute Malnutrition, stunted 6-23 months, stunted 0-...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\begin{verbatim}
+##     period             county          Total Dewormed   Acute Malnutrition
+##  Length:1410        Length:1410        Min.   :    97   Min.   :   1.0    
+##  Class :character   Class :character   1st Qu.:  2454   1st Qu.:  15.0    
+##  Mode  :character   Mode  :character   Median :  4564   Median :  39.0    
+##                                        Mean   : 11458   Mean   : 125.4    
+##                                        3rd Qu.:  8222   3rd Qu.: 143.5    
+##                                        Max.   :392800   Max.   :4123.0    
+##                                                         NA's   :355       
+##  stunted 6-23 months stunted 0-<6 months stunted 24-59 months diarrhoea cases
+##  Min.   :   1.0      Min.   :   1.0      Min.   :   1.0       Min.   :  198  
+##  1st Qu.:  69.5      1st Qu.:  36.5      1st Qu.:  22.0       1st Qu.: 1464  
+##  Median : 159.0      Median :  84.0      Median :  50.0       Median : 2158  
+##  Mean   : 280.2      Mean   : 139.8      Mean   : 110.8       Mean   : 2813  
+##  3rd Qu.: 328.5      3rd Qu.: 157.0      3rd Qu.: 114.2       3rd Qu.: 3335  
+##  Max.   :4398.0      Max.   :7900.0      Max.   :3169.0       Max.   :15795  
+##  NA's   :11          NA's   :19          NA's   :14                          
+##  Underweight 0-<6 months Underweight 6-23 months Underweight 24-59 Months
+##  Min.   :   6.0          Min.   :  16.0          Min.   :   1.00         
+##  1st Qu.:  87.0          1st Qu.: 249.0          1st Qu.:  51.25         
+##  Median : 162.5          Median : 456.0          Median : 120.50         
+##  Mean   : 223.5          Mean   : 652.3          Mean   : 305.74         
+##  3rd Qu.: 272.8          3rd Qu.: 791.8          3rd Qu.: 311.00         
+##  Max.   :1937.0          Max.   :5348.0          Max.   :4680.00         
+## 
+\end{verbatim}
+
+\hypertarget{count-the-nas}{%
+\section{Count the NAs}\label{count-the-nas}}
+
+\begin{verbatim}
+##                   period                   county           Total Dewormed 
+##                        0                        0                        0 
+##       Acute Malnutrition      stunted 6-23 months      stunted 0-<6 months 
+##                      355                       11                       19 
+##     stunted 24-59 months          diarrhoea cases  Underweight 0-<6 months 
+##                       14                        0                        0 
+##  Underweight 6-23 months Underweight 24-59 Months 
+##                        0                        0
+\end{verbatim}
+
+\hypertarget{data-visualization}{%
+\section{Data Visualization}\label{data-visualization}}
+
+\includegraphics{IMPROVISED_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{verbatim}
+## Warning: Removed 355 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\includegraphics{IMPROVISED_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{verbatim}
+## Warning: Removed 11 rows containing non-finite values (`stat_boxplot()`).
+\end{verbatim}
+
+\includegraphics{IMPROVISED_files/figure-latex/unnamed-chunk-4-3.pdf}
+\includegraphics{IMPROVISED_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+\end{document}
