@@ -1,15 +1,10 @@
----
-title: "IMPROVED"
-author: "NGAIRA"
-date: "2024-01-19"
-output: pdf_document
----
+
 ---
 title: "PERSONAL CHECKS"
 author: "NGAIRA"
 date: "2024-01-19"
 output:
-  pdf_document: default
+  
   word_document: default
 ---
 
