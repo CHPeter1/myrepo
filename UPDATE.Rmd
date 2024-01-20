@@ -1,15 +1,12 @@
-
 ---
-title: "PERSONAL CHECKS"
+title: "LESSON 3.. COLUMN SELECTION"
 author: "NGAIRA"
-date: "2024-01-19"
-output:
-  
-  word_document: default
+date: "2024-01-20"
+output: word_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 require(readr)
 require(tidyverse)
 require(magrittr)
@@ -17,43 +14,57 @@ require(ggplot2)
 require(gtsummary)
 require(reshape2)
 require(officer)
-
 ```
 
-# Load Data
+## R Markdown
+# Data Loading
 
 ```{r, echo=FALSE}
-cema_internship_task_2023 <- read_csv("D:/NGAIRA/cema_internship_task_2023.csv")
+cema <- read_csv("D:/NGAIRA/cema_internship_task_2023.csv")
+View(cema)
 
 ```
 
-# Summary 
+## **COLUMN SELECTION**
+## ONLY WORKING WITH THE FIRST 30 COUNTIES
 ```{r}
-data<-as.data.frame(cema_internship_task_2023)
-summary(data)
+new <-cema[1:30,]
+new <- subset(new, select = -c(period) )
+```
+## REPLACE MISSING VALUES WITH ZEROS
+```{r, echo=TRUE}
+new[is.na(new)] = 0
 ```
 
 # Count the NAs
 
 ```{r}
 # Count the number of missing values in each column
-colSums(is.na(data))
+colSums(is.na(new))
 
 ```
 
-# Data Visualization
+
+
+#SUMMARY OF THE NEWLY DEFINED DATAFRAME
+```{r, echo=TRUE}
+new<-as.data.frame(new)
+summary(new)
+```
+
+## NEW DATA VISUALISATION
 ```{r}
-# Plot Total Dewormed by County
-ggplot(data, aes(x = county, y = `Total Dewormed`)) +
+# *Plot Total Dewormed by County*
+ggplot(new, aes(x = county, y = `Total Dewormed`)) +
   geom_bar(stat = "identity") +
   labs(title = "Total Dewormed by County", x = "County", y = "Total Dewormed") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 
-# Scatter plot of Acute Malnutrition vs. Total Dewormed
+## Scatter plot of Acute Malnutrition vs. Total Dewormed
 ```{r}
-ggplot(data, aes(x = `Total Dewormed`, y = `Acute Malnutrition`)) +
+ggplot(new, aes(x = `Total Dewormed`, y = `Acute Malnutrition`)) +
   geom_point() +
   labs(title = "Scatter plot of Acute Malnutrition vs. Total Dewormed",
        x = "Total Dewormed", y = "Acute Malnutrition")
@@ -61,18 +72,20 @@ ggplot(data, aes(x = `Total Dewormed`, y = `Acute Malnutrition`)) +
 
 # Box plot of stunted 6-23 months by County
 ```{r}
-ggplot(data, aes(x = county, y = `stunted 6-23 months`)) +
+ggplot(new, aes(x = county, y = `stunted 6-23 months`)) +
   geom_boxplot() +
   labs(title = "Box plot of stunted 6-23 months by County",
        x = "County", y = "stunted 6-23 months") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-# Histogram of diarrhoea cases
+
+## Histogram of diarrhoea cases
 ```{r}
-ggplot(data, aes(x = `diarrhoea cases`)) +
+ggplot(new, aes(x = `diarrhoea cases`)) +
   geom_histogram(binwidth = 100, fill = "blue", color = "black") +
   labs(title = "Histogram of diarrhoea cases",
        x = "Diarrhoea Cases", y = "Frequency")
 
 ```
+
